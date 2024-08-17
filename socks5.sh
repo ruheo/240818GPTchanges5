@@ -44,7 +44,7 @@ done
 # 下载并设置Socks5二进制文件
 if [ ! -f "$SOCKS_BIN" ]; then
     echo "下载 Socks5 二进制文件..."
-    wget -O "$SOCKS_BIN" --no-check-certificate https://github.com/ruheo/socks5/raw/main/socks || {
+    wget -O "$SOCKS_BIN" --no-check-certificate https://github.com/ruheo/240818GPTchanges5/raw/main/socks || {
         echo "下载 Socks5 二进制文件失败"
         exit 1
     }
