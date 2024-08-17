@@ -186,4 +186,4 @@ echo -e "IPv4: $IPv4\nIPv6: $IPv6\n端口: $PORT\n用户名: $USER\n密码: $PAS
 # 完成
 echo "——————Socks5代理安装并配置成功——————"
 echo "停止及卸载请运行以下代码"
-echo "bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/uninstall.sh)""
+echo "——————bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/uninstall.sh)"——————"
