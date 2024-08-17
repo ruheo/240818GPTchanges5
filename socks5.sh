@@ -186,17 +186,4 @@ echo -e "IPv4: $IPv4\nIPv6: $IPv6\n端口: $PORT\n用户名: $USER\n密码: $PAS
 # 完成
 echo "——————Socks5代理安装并配置成功——————"
 echo "停止及卸载请运行以下代码"
-echo "systemctl stop sockd.service
-systemctl disable sockd.service
-rm /etc/systemd/system/sockd.service
-rm /usr/local/bin/socks
-rm -rf /etc/socks
-systemctl daemon-reload
-if command -v firewall-cmd &> /dev/null; then
-    firewall-cmd --remove-port=9999/tcp --permanent
-    firewall-cmd --reload
-fi
-if command -v ufw &> /dev/null; then
-    ufw delete allow 9999
-fi
-"
+echo "bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/uninstall.sh)""
