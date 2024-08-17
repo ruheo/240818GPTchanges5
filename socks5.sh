@@ -199,4 +199,4 @@ fi
 if command -v ufw &> /dev/null; then
     ufw delete allow 9999
 fi
-echo "Socks5代理服务已停止并卸载""
+"
