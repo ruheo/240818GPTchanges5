@@ -15,8 +15,3 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh) 端口 用户名 密码 password"
 ```
-
-卸载
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/uninstall.sh)"
-```
