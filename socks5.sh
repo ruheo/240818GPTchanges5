@@ -44,7 +44,7 @@ done
 # 下载并设置Socks5二进制文件
 if [ ! -f "$SOCKS_BIN" ]; then
     echo "下载 Socks5 二进制文件..."
-    wget -O "$SOCKS_BIN" --no-check-certificate https://github.com/ruheo/240818GPTchanges5/raw/main/socks || {
+    wget -O "$SOCKS_BIN" --no-check-certificate https://github.com/ruheo/socks5/raw/main/socks || {
         echo "下载 Socks5 二进制文件失败"
         exit 1
     }
@@ -183,7 +183,48 @@ IPv4=$(curl -4 ip.sb)
 IPv6=$(curl -6 ip.sb)
 echo -e "IPv4: $IPv4\nIPv6: $IPv6\n端口: $PORT\n用户名: $USER\n密码: $PASSWD"
 
+# 生成卸载脚本
+cat <<EOF > /usr/local/bin/uninstall_socks.sh
+#!/bin/bash
+
+# 停止服务
+systemctl stop sockd.service
+
+# 禁用服务
+systemctl disable sockd.service
+
+# 删除systemd服务文件
+rm /etc/systemd/system/sockd.service
+
+# 删除Socks5二进制文件
+rm /usr/local/bin/socks
+
+# 删除配置文件和目录
+rm -rf /etc/socks
+
+# 重新加载systemd守护进程
+systemctl daemon-reload
+
+# 关闭防火墙端口（适用于CentOS/RedHat使用firewalld的情况）
+if command -v firewall-cmd &> /dev/null; then
+    firewall-cmd --remove-port=$PORT/tcp --permanent
+    firewall-cmd --reload
+fi
+
+# 关闭防火墙端口（适用于Ubuntu/Debian使用ufw的情况）
+if command -v ufw &> /dev/null; then
+    ufw delete allow $PORT
+fi
+
+echo "Socks5代理服务已停止并卸载"
+EOF
+
+# 设置卸载脚本的可执行权限
+chmod +x /usr/local/bin/uninstall_socks.sh
+
+# 提示用户卸载命令
+echo "Socks5代理安装成功！如需卸载，请执行以下命令："
+echo "bash /usr/local/bin/uninstall_socks.sh"
+
 # 完成
 echo "——————Socks5代理安装并配置成功——————"
-echo "停止及卸载请运行以下代码"
-echo "——————bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/uninstall.sh)"——————"
