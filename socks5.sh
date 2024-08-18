@@ -14,6 +14,9 @@ USER=${2:-caishen891}
 PASSWD=${3:-999999}
 AUTH_MODE=${4:-password} # 认证模式：noauth（无认证）或 password（需要认证）
 
+# 调试信息
+echo "当前认证模式: $AUTH_MODE"
+
 # 设置变量
 PACKAGE_MANAGER=""
 FIREWALL_COMMAND=""
@@ -189,7 +192,6 @@ else
     echo -e "该代理使用无认证模式（noauth）"
 fi
 
-
 # 生成卸载脚本
 cat <<EOF > /usr/local/bin/uninstall_socks.sh
 #!/bin/bash
@@ -229,13 +231,6 @@ EOF
 # 设置卸载脚本的可执行权限
 chmod +x /usr/local/bin/uninstall_socks.sh
 
-
-# 完成
-echo "——————Socks5代理安装并配置成功——————"
 # 提示用户卸载命令
 echo "Socks5代理安装成功！如需卸载，请执行以下命令："
-
-
 echo "bash /usr/local/bin/uninstall_socks.sh"
-
-
