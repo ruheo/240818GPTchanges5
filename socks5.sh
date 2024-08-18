@@ -181,7 +181,14 @@ eval "$FIREWALL_COMMAND"
 # 显示连接信息
 IPv4=$(curl -4 ip.sb)
 IPv6=$(curl -6 ip.sb)
-echo -e "IPv4: $IPv4\nIPv6: $IPv6\n端口: $PORT\n用户名: $USER\n密码: $PASSWD"
+echo -e "IPv4: $IPv4\nIPv6: $IPv6\n端口: $PORT"
+
+if [ "$AUTH_MODE" = "password" ]; then
+    echo -e "用户名: $USER\n密码: $PASSWD"
+else
+    echo -e "该代理使用无认证模式（noauth）"
+fi
+
 
 # 生成卸载脚本
 cat <<EOF > /usr/local/bin/uninstall_socks.sh
