@@ -9,10 +9,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # 获取脚本参数
-PORT=${1:-9999}
-USER=${2:-caishen891}
-PASSWD=${3:-999999}
-AUTH_MODE=${4:-password} # 认证模式：noauth（无认证）或 password（需要认证）
+AUTH_MODE=${1:-password} # 认证模式：noauth（无认证）或 password（需要认证）
+PORT=${2:-9999}
+USER=${3:-caishen891}
+PASSWD=${4:-999999}
 
 # 如果认证模式是 noauth，则忽略用户名和密码
 if [ "$AUTH_MODE" = "noauth" ]; then
