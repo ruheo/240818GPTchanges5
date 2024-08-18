@@ -8,24 +8,16 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# 默认端口
-PORT=9999
+# 获取脚本参数
+PORT=${1:-9999}
+USER=${2:-caishen891}
+PASSWD=${3:-999999}
+AUTH_MODE=${4:-password} # 认证模式：noauth（无认证）或 password（需要认证）
 
-# 判断第一个参数是否为 noauth 模式
-if [ "$1" = "noauth" ]; then
-    AUTH_MODE="noauth"
+# 如果认证模式是 noauth，则忽略用户名和密码
+if [ "$AUTH_MODE" = "noauth" ]; then
     USER=""
     PASSWD=""
-else
-    PORT=${1:-9999}
-    USER=${2:-caishen891}
-    PASSWD=${3:-999999}
-    AUTH_MODE=${4:-password}
-fi
-
-# 如果用户名和密码为空，则使用 noauth 模式
-if [ -z "$USER" ] && [ -z "$PASSWD" ]; then
-    AUTH_MODE="noauth"
 fi
 
 # 调试信息
@@ -208,8 +200,6 @@ fi
 
 # 生成卸载脚本
 cat <<EOF > /usr/local/bin/uninstall_socks.sh
-#!/bin/bash
-
 #!/bin/bash
 
 # 停止服务
