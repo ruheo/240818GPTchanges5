@@ -22,6 +22,9 @@ fi
 
 # 调试信息
 echo "当前认证模式: $AUTH_MODE"
+echo "端口: $PORT"
+echo "用户名: $USER"
+echo "密码: $PASSWD"
 
 # 设置变量
 PACKAGE_MANAGER=""
