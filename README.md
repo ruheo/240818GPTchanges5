@@ -13,7 +13,7 @@ curl -fsSL https://raw.githubusercontent.com/ruheo/test2/main/socks5.sh | sudo b
 
 自定义端口，无需用户名和密码
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ruheo/test2/main/socks5.sh | sudo bash -s -- 端口号 noauth
+curl -fsSL https://raw.githubusercontent.com/ruheo/test2/main/socks5.sh | sudo bash -s -- noauth 端口号
 ```
 
 自定义端口用户名和密码
