@@ -210,6 +210,8 @@ fi
 cat <<EOF > /usr/local/bin/uninstall_socks.sh
 #!/bin/bash
 
+#!/bin/bash
+
 # 停止服务
 systemctl stop sockd.service
 
@@ -224,6 +226,11 @@ rm /usr/local/bin/socks
 
 # 删除配置文件和目录
 rm -rf /etc/socks
+
+# 删除用户
+if id "socksuser" &>/dev/null; then
+    userdel -r socksuser
+fi
 
 # 重新加载systemd守护进程
 systemctl daemon-reload
