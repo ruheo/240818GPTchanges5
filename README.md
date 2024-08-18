@@ -8,15 +8,15 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/
 
 指定端口9999，无需用户名和密码
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh) noauth"
+curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh | sudo bash -s -- noauth"
 ```
 
 自定义端口，无需用户名和密码
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh)  端口号 noauth"
+curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh | sudo bash -s -- 端口号 noauth"
 ```
 
 自定义端口用户名和密码
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh) 8888 myuser mypassword"
+curl -fsSL https://raw.githubusercontent.com/ruheo/240818GPTchanges5/main/socks5.sh | sudo bash -s -- 8888 myuser mypassword"
 ```
