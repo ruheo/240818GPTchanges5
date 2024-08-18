@@ -229,9 +229,14 @@ EOF
 # 设置卸载脚本的可执行权限
 chmod +x /usr/local/bin/uninstall_socks.sh
 
+
+# 完成
+echo "——————Socks5代理安装并配置成功——————"
+
+
+
 # 提示用户卸载命令
 echo "Socks5代理安装成功！如需卸载，请执行以下命令："
 echo "bash /usr/local/bin/uninstall_socks.sh"
 
-# 完成
-echo "——————Socks5代理安装并配置成功——————"
+
