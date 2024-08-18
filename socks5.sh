@@ -8,11 +8,25 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# 获取脚本参数
-PORT=${1:-9999}
-USER=${2:-caishen891}
-PASSWD=${3:-999999}
-AUTH_MODE=${4:-password} # 认证模式：noauth（无认证）或 password（需要认证）
+# 默认端口
+PORT=9999
+
+# 判断第一个参数是否为 noauth 模式
+if [ "$1" = "noauth" ]; then
+    AUTH_MODE="noauth"
+    USER=""
+    PASSWD=""
+else
+    PORT=${1:-9999}
+    USER=${2:-caishen891}
+    PASSWD=${3:-999999}
+    AUTH_MODE=${4:-password}
+fi
+
+# 如果用户名和密码为空，则使用 noauth 模式
+if [ -z "$USER" ] && [ -z "$PASSWD" ]; then
+    AUTH_MODE="noauth"
+fi
 
 # 调试信息
 echo "当前认证模式: $AUTH_MODE"
